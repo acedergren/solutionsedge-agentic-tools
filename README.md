@@ -1,0 +1,267 @@
+# Solutions Edge - Agentic Tools
+
+Comprehensive toolkit for AI-assisted development with Claude Code, including optimized permissions, Git workflows, and automation hooks.
+
+## 📦 What's Included
+
+### 🔐 Claude Code Permissions (`claude/settings/`)
+- **User-Level Config** - Global permissions (400+ commands) for all projects
+- **Project-Level Config** - Project-specific permissions example
+- Covers Node.js, Python, iOS, Android, Go, Rust, C/C++, Ruby, PHP, Perl, and more
+- Full DevOps stack: Docker, Kubernetes, Terraform, Ansible
+- All cloud platforms: AWS, GCP, Azure, OCI, Cloudflare
+
+### 🔄 Git Workflows (`git-workflow/`)
+*Coming soon* - Best practices for Git workflows with Claude Code
+
+### 🪝 Claude Hooks (`claude/hooks/`)
+*Coming soon* - Automation hooks for Claude Code sessions
+
+---
+
+## 🚀 Quick Start - Claude Permissions
+
+### User-Level Setup (Recommended)
+
+Global permissions that apply to **all** Claude Code projects:
+
+```bash
+# 1. Create Claude config directory
+mkdir -p ~/.config/claude
+
+# 2. Copy user-level config
+cp claude/settings/user-level/config.json ~/.config/claude/config.json
+
+# 3. Verify
+ls -lh ~/.config/claude/config.json
+```
+
+### Project-Level Setup (Optional)
+
+For project-specific permissions:
+
+```bash
+# In your project directory
+mkdir -p .claude
+cp claude/settings/project-level/settings.local.json .claude/settings.local.json
+```
+
+---
+
+## 🎯 Claude Permissions - What's Covered
+
+### Development Tools (400+ commands)
+
+#### Core Development
+- **Node.js**: pnpm, npm, npx, node, yarn, bun, deno, turbo, nx
+- **Python**: python3, pip, pytest, mypy, black, isort, ruff, poetry, pipenv
+- **iOS/macOS**: xcodebuild, swift, xcrun, swiftlint, fastlane, pod
+- **Android**: gradle, adb, emulator
+- **Java/JVM**: java, maven, gradle, kotlin, scala
+- **Ruby**: ruby, gem, bundle, rails, rspec, rubocop
+- **Go**: go, gofmt, golangci-lint
+- **Rust**: cargo, rustc, rustfmt, clippy
+- **C/C++**: gcc, clang, make, cmake, gdb, lldb, valgrind
+- **Perl**: perl, cpan
+- **PHP**: php, composer, phpunit
+
+#### Version Managers
+- nvm, pyenv, rbenv, asdf, tfenv, goenv, jenv, sdkman
+
+#### Infrastructure as Code
+- **Terraform**: terraform, terragrunt, tflint, tfsec
+- **Ansible**: ansible, ansible-playbook, ansible-vault
+- **Pulumi**: pulumi
+
+#### Cloud Platforms
+- **Oracle Cloud (OCI)**: oci, sqlcl, sql, sqlplus
+- **AWS**: aws
+- **Google Cloud**: gcloud
+- **Azure**: az
+- **Others**: doctl, fly, vercel, netlify, railway
+- **Cloudflare**: wrangler, cloudflare, cloudflared
+
+#### Containers & Orchestration
+- **Docker**: docker, docker-compose, podman
+- **Kubernetes**: kubectl, k9s, helm, minikube, kind, skaffold
+
+#### Databases
+- PostgreSQL, MySQL, SQLite, MongoDB, Redis, InfluxDB, Cassandra
+
+#### Testing & Quality
+- **Testing**: vitest, jest, playwright, cypress, selenium
+- **Linting**: eslint, prettier, shellcheck, shfmt
+- **Security**: snyk, semgrep, trivy, grype, syft
+
+#### Observability
+- grafana-cli, prometheus, alertmanager, loki, tempo, opentelemetry
+
+#### System Package Managers
+- brew, apt, dnf, yum, pacman, snap, flatpak, nix
+
+#### Modern CLI Tools
+- **File Operations**: exa, eza, lsd, fd, ripgrep, bat
+- **Navigation**: zoxide, fzf
+- **Monitoring**: procs, dust, duf, btop, glances
+- **Performance**: hyperfine, tokei
+
+#### System Tools
+- **Terminal**: tmux, screen, byobu, zellij
+- **SSH/Security**: ssh-keygen, gpg, age, sops
+- **Debugging**: strace, ltrace, perf, gdb, lldb
+- **Network**: tcpdump, nmap, mtr, speedtest
+- **Compression**: tar, zip, gzip, zstd, lz4, 7z
+
+#### All Standard Unix Commands
+- ls, cat, grep, find, sed, awk, base64, cut, sort, uniq, diff, chmod, chown, mkdir, cp, mv, rm, ln, ps, kill, curl, wget, ssh, rsync, and 100+ more
+
+---
+
+## 📊 Configuration Stats
+
+### User-Level Config
+- **Size**: 615 lines (21 KB)
+- **Bash Commands**: 400+ permission patterns
+- **Categories**: 30+ organized sections
+- **Scope**: All Claude Code projects
+
+### Project-Level Example
+- **Size**: 296 lines (9.6 KB)
+- **Focus**: Project-specific tools, scripts, MCP servers
+- **Includes**: Serena MCP, Snyk, Playwright, custom skills
+
+---
+
+## 🔒 Security Philosophy
+
+### Two-Tier Permission Strategy
+
+```
+User-Level (~/.config/claude/config.json)
+    ↓ Global baseline - safe everywhere
+    ↓
+Project-Level (.claude/settings.local.json)
+    ↓ Project-specific extensions
+    ↓
+Final Permission Set (merged)
+```
+
+**User-Level**: Conservative, universal tools safe across all projects
+**Project-Level**: Aggressive, project-specific tools and scripts
+
+### What's NOT Included (By Design)
+
+- ❌ Destructive operations without wildcards (rm -rf /, dd, mkfs)
+- ❌ System modification commands (reboot, shutdown, init)
+- ❌ Direct file path permissions (antipattern - use Read/Write tools instead)
+
+---
+
+## 📝 Customization
+
+### Adding New Commands
+
+Edit your local config and add to the appropriate section:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "# ============================================",
+      "# Your Custom Section",
+      "# ============================================",
+      "Bash(your-tool:*)",
+      "Bash(another-tool:*)"
+    ]
+  }
+}
+```
+
+### Permission Patterns
+
+- `Bash(tool:*)` - Allow all subcommands
+- `Bash(tool subcommand:*)` - Allow specific subcommand with arguments
+- `WebFetch(domain:example.com)` - Allow fetching from domain
+- `mcp__server__tool` - Allow specific MCP server tool
+
+---
+
+## 🔍 Comparison: Before vs After
+
+### Before Optimization
+- **Entries**: 432 granular permissions
+- **Size**: 40 KB
+- **Issues**:
+  - Missing 91 common commands
+  - Hardcoded file paths
+  - Duplicate patterns
+  - No organization
+
+### After Optimization
+- **Entries**: 400+ organized patterns
+- **Size**: 21 KB (48% reduction)
+- **Improvements**:
+  - ✅ All common dev tools covered
+  - ✅ Organized into 30+ categories
+  - ✅ Consolidated patterns
+  - ✅ Best practices applied
+
+---
+
+## 🎓 Learning Resources
+
+- [Claude Code Documentation](https://claude.com/claude-code)
+- [Claude Code GitHub](https://github.com/anthropics/claude-code)
+- [Permissions Best Practices](https://docs.anthropic.com/claude-code/permissions)
+
+---
+
+## 📁 Repository Structure
+
+```
+solutionsedge-agentic-tools/
+├── README.md
+├── claude/
+│   ├── settings/
+│   │   ├── user-level/
+│   │   │   └── config.json          # Global permissions
+│   │   └── project-level/
+│   │       └── settings.local.json  # Project example
+│   └── hooks/                        # Coming soon: Automation hooks
+├── git-workflow/                     # Coming soon: Git best practices
+└── .gitignore
+```
+
+---
+
+## 🤝 Contributing
+
+Found a missing tool or best practice? PRs welcome!
+
+1. Add the tool to the appropriate category
+2. Follow existing naming patterns
+3. Add to this README
+4. Test the configuration
+
+---
+
+## 📜 License
+
+MIT License - Feel free to use and modify for your projects.
+
+---
+
+## 🙏 Acknowledgments
+
+**Solutions Edge** - Agentic Tools for Modern Development
+
+- Optimized for solo developers, small teams, and enterprise use
+- Covers 10+ programming languages and frameworks
+- Includes modern DevOps tools (Docker, Kubernetes, Terraform, Ansible)
+- Full cloud platform support (AWS, GCP, Azure, OCI, Cloudflare)
+- Security-focused with Snyk, Semgrep, Trivy integration
+
+---
+
+**Last Updated**: January 2026
+**Claude Code Version**: Compatible with latest CLI
