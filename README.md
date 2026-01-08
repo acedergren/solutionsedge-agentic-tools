@@ -247,7 +247,16 @@ Found a missing tool or best practice? PRs welcome!
 
 ## 📜 License
 
-MIT License - Feel free to use and modify for your projects.
+GNU Affero General Public License v3.0 (AGPL-3.0)
+
+This project is licensed under the AGPL-3.0 License - see the [LICENSE](LICENSE) file for details.
+
+**Key Points:**
+- ✅ Free to use, modify, and distribute
+- ✅ Must disclose source code
+- ✅ Must use same AGPL-3.0 license for derivatives
+- ✅ Network use triggers copyleft (SaaS/API services must open-source)
+- ✅ Patent grant included
 
 ---
 
