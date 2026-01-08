@@ -12,10 +12,16 @@ Comprehensive toolkit for AI-assisted development with Claude Code, including op
 - All cloud platforms: AWS, GCP, Azure, OCI, Cloudflare
 
 ### 🔄 Git Workflows (`git-workflow/`)
-*Coming soon* - Best practices for Git workflows with Claude Code
+- **Workflow Guides** - Trunk-Based, GitHub Flow, GitFlow strategies
+- **Commit Templates** - 8 templates for Conventional Commits
+- **PR Templates** - 6 templates for different change types
+- **Branch Naming** - Conventions and enforcement strategies
 
 ### 🪝 Claude Hooks (`claude/hooks/`)
-*Coming soon* - Automation hooks for Claude Code sessions
+- **5 Example Hooks** - Security, pre-commit, cost tracking, session logging, backups
+- **4 Hook Templates** - Starter templates for custom hooks
+- **Hookify Guide** - Using /hookify command to create hooks from conversations
+- **Full Documentation** - Configuration, testing, best practices
 
 ---
 
@@ -221,14 +227,45 @@ Edit your local config and add to the appropriate section:
 ```
 solutionsedge-agentic-tools/
 ├── README.md
+├── LICENSE (AGPL-3.0)
 ├── claude/
 │   ├── settings/
 │   │   ├── user-level/
-│   │   │   └── config.json          # Global permissions
-│   │   └── project-level/
-│   │       └── settings.local.json  # Project example
-│   └── hooks/                        # Coming soon: Automation hooks
-├── git-workflow/                     # Coming soon: Git best practices
+│   │   │   └── config.json              # Global permissions (400+ commands)
+│   │   ├── project-level/
+│   │   │   └── settings.local.json      # Project example
+│   │   └── templates/                    # 4 use-case templates
+│   └── hooks/
+│       ├── README.md                     # Hooks documentation
+│       ├── hookify-rules.md              # Using /hookify command
+│       ├── examples/                     # 5 ready-to-use hooks
+│       │   ├── commit-preflight.sh
+│       │   ├── security-scan.sh
+│       │   ├── cost-tracker.sh
+│       │   ├── session-summary.sh
+│       │   └── file-backup.sh
+│       └── hook-templates/               # 4 starter templates
+│           ├── bash-pre.sh
+│           ├── edit-pre.sh
+│           ├── user-prompt-submit.sh
+│           └── session-start.sh
+├── git-workflow/
+│   ├── README.md                         # Workflow comparison & setup
+│   ├── workflows/                        # 3 workflow strategies
+│   │   ├── trunk-based.md
+│   │   ├── github-flow.md
+│   │   └── gitflow.md
+│   ├── commit-templates/                 # 8 commit templates
+│   │   ├── conventional-commits.md
+│   │   ├── feature-template.txt
+│   │   ├── fix-template.txt
+│   │   └── ... (5 more templates)
+│   ├── pr-templates/                     # 6 PR templates
+│   │   ├── feature-pr.md
+│   │   ├── bugfix-pr.md
+│   │   └── ... (4 more templates)
+│   └── branch-naming/                    # Branch naming guide
+│       └── conventions.md
 └── .gitignore
 ```
 
